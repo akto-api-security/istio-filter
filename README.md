@@ -48,6 +48,8 @@ kubectl apply -f <your-deployment-file>
 
 4. Now we will add the envoy filter to the istio-proxy containers. For more information on custom envoy filters you can check the [official docs](https://istio.io/latest/docs/reference/config/networking/envoy-filter). To add that run the following command. You can modify the "match" conditions in the file according to your deployment.
 
+Note: You can configure the filter according to your needs, and modify the kafka-ip and akto traffic read limit.
+
 ```bash
 kubectl apply -f akto-envoy-filter.yaml
 ```
