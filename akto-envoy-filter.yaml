@@ -90,6 +90,10 @@ spec:
               end
 
               function envoy_on_request(request_handle)
+                  pcall(envoy_on_request_core, request_handle)
+              end
+
+              function envoy_on_request_core(request_handle)
                   if dataSent > dataCap then
                       return
                   end
@@ -125,6 +129,10 @@ spec:
               end
               
               function envoy_on_response(response_handle)
+                  pcall(envoy_on_response_core, response_handle)
+              end
+              
+              function envoy_on_response_core(response_handle)
                   updateLastReset()
                   local temp = response_handle:streamInfo():dynamicMetadata():get("envoy.filters.http.lua")
                   if temp == nil then
